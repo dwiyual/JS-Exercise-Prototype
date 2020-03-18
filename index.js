@@ -90,18 +90,26 @@ Car.prototype.drive = function (distance) {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
+function Baby(babyattr) {
+  Person.call(this, babyattr);
+  this.favoriteToy = babyattr.favoriteToy;
+};
 
-}
+Baby.prototype.play = function () {
+  return `Playing with ${this.favoriteToy}`
+};
+
+Baby.prototype = Object.create(Person.prototype);
 
 /* 
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. in global scope this refers widow object.
+  2. Whenever a preceding dot calls a function, the object before the dot is this.
+  3. when using constructor functions the oject created when we pass in to our construtor ,
+   is what the this keyword is refering to. 
+  4. whenever we use call() or apply() methods this is explicitly defined.
 */
 
 
